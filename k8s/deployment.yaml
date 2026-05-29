@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platform-engineer
+  labels:
+    app: platform-engineer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: platform-engineer
+  template:
+    metadata:
+      labels:
+        app: platform-engineer
+    spec:
+      containers:
+        - name: platform-engineer
+          image: ghcr.io/sajjadkhan12/platform-engineer:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
